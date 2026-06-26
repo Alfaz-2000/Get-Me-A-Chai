@@ -1,18 +1,23 @@
 'use client'
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation'
 
 
 const Login = () => {
     const {data : session} = useSession()
-    if (session){
-        const router = useRouter()
-        router.push('/darshboard')
+    const router = useRouter()
+    useEffect(() => {
+        // below line is to set the title of the page to "Login - Get Me A Chai" this way its client component we cant set the title in the head tag so we set it here
+    document.title = "Login - Get Me A Chai" 
+
+    if (session) {
+      router.push('/dashboard')
     }
+  }, [])
   return (
     <div className='text-white py-14 container mx-auto'>
-        <h1 className='text-center font-bold text-3xl'>Login/Signup to get fans to support you!</h1>
+        <h1 className='text-center font-bold text-3xl'>Login to get Started</h1>
         <div className="flex flex-col gap-2 min-h-screen p-10 items-center">
 
 
@@ -99,7 +104,7 @@ const Login = () => {
 </button>
 
 
-<button onClick={()=>{console.log("Github clicked"),signIn("github")}}
+<button onClick={()=>{signIn("github")}}
     className="flex items-center w-64 bg-white border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
     <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 73 73" version="1.1">

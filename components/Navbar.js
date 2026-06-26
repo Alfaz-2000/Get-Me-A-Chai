@@ -16,11 +16,11 @@ const Navbar = () => {
   // }
 
   return (
-    <nav className='bg-black text-white flex justify-between items-center px-4 h-16'>
+    <nav className='bg-gray-900 shadow-lg shadow-white text-white flex justify-between items-center px-4 md:h-16 flex-col md:flex-row'>
       
-        <Link href={"/"} className="logo font-bold flex justify-center items-center">
-        <span>GetMeAChai!</span>
+        <Link href={"/"} className="logo font-bold text-lg flex justify-center items-center">
         <img src="/tea.gif" width={44} alt="tea-image" />
+        <span className="text-xl md:text-base my-3 md:my-0j">GetMeAChai!</span>
         </Link>
       {/* <ul className='flex justify-between gap-4'>
         <li>Home</li>
@@ -30,7 +30,7 @@ const Navbar = () => {
         <li>Login</li>
       </ul> */}
 
-      <div className='relative'>
+      <div className='relative flex flex-col md:block gap-4'>
         {session && 
         <>
           <button onClick={()=>setShowdropdown(!showdropdown)} 
@@ -42,13 +42,13 @@ const Navbar = () => {
             <svg className="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 9-7 7-7-7" /></svg>
           </button>
 
-          <div id="dropdown" className={`z-10 ${showdropdown?"":"hidden"} absolute left-[125px] bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44`}>
+          <div id="dropdown" className={`z-10 ${showdropdown ? "" : "hidden"} absolute left-[15px] top-12 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
             <ul className="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
               <li>
                 <Link href="/dashboard" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Dashboard</Link>
               </li>
               <li>
-                <Link href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Your page</Link>
+                <Link href={`/${session.user.name}`} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Your page</Link>
               </li>
               <li>
                 <Link href="#" onClick={()=>signOut()} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Sign out</Link>
