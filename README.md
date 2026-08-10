@@ -1,46 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GetMeAChai ☕
 
-## Getting Started
+A full-stack crowdfunding platform that enables developers and content creators to create personalized funding pages and receive financial support from their audience.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- GitHub OAuth authentication using NextAuth.js
+- Creator profiles with customizable usernames, profile pictures, and cover images
+- Personalized creator pages using dynamic routing
+- Razorpay payment gateway integration
+- Custom and predefined payment amounts
+- Supporter messages displayed on creator profiles
+- Creator dashboard for managing profile and payment settings
+- MongoDB database integration using Mongoose
+- Responsive UI built with Tailwind CSS
+- Server-side operations using Next.js Server Actions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**Frontend**
+- Next.js
+- React
+- JavaScript
+- Tailwind CSS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Backend & Database**
+- Next.js Server Actions
+- Node.js
+- MongoDB
+- Mongoose
 
-## Learn More
+**Authentication & Payments**
+- NextAuth.js
+- GitHub OAuth
+- Razorpay
 
-To learn more about Next.js, take a look at the following resources:
+## Application Flow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Creators sign in using GitHub.
+2. Creators configure their profile through the dashboard.
+3. Each creator gets a unique public funding page.
+4. Supporters can enter their name, message, and contribution amount.
+5. Razorpay processes the payment.
+6. Successful contributions are displayed on the creator's page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```text
+app/
+├── about/
+├── api/
+│   ├── auth/
+│   └── razorpay/
+├── dashboard/
+├── login/
+├── [username]/
+└── page.js
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+actions/
+└── useractions.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Get-Me-A-Chai
+components/
+├── Dashboard.js
+├── PaymentPage.js
+├── Navbar.js
+└── Footer.js
 
+db/
+└── connectDb.js
 
-
-<!-- the backed  -->
-just now i have created models floder
-
-
-
-
+models/
+├── User.js
+└── Payment.js
